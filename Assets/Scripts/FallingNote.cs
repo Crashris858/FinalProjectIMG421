@@ -7,6 +7,7 @@ public class FallingNote : MonoBehaviour
 
     void Update()
     {
+        // using world space due to local prefab rotation
         transform.Translate(Vector2.down * fallSpeed * Time.deltaTime, Space.World);
     }
 }

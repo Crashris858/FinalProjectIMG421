@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionManager : MonoBehaviour
@@ -30,7 +28,7 @@ public class PotionManager : MonoBehaviour
 
     void CalculateQuality()
     {
-        float percentHit = ((float)notesHit / totalNotes) * 100;
+        float percentHit = (float)notesHit / totalNotes * 100;
         if(percentHit >= 80)
         {
             Debug.Log("Potion Quality: Perfect (" + percentHit + "%)");

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,8 +42,6 @@ public class HitZone : MonoBehaviour
             notesInZone.Remove(other.gameObject);
             potionManager.Miss();
         }
-
-        Destroy(other.gameObject);
     }
 
 }
