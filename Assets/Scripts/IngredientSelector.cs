@@ -30,7 +30,14 @@ public class IngredientSelector : MonoBehaviour
         }
         else
         {
-            Debug.Log("Please select both ingredients before brewing.");
+            Debug.Log("Select both ingredients before brewing.");
         }
+    }
+
+    public void ResetSelections()
+    {
+        ingredientA = "";
+        ingredientB = "";
+        Debug.Log("Ingredient selections cleared.");
     }
 }
