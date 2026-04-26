@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0eb38247d12674d854d56f4aa7bd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitKey: 273
+  potionManager: {fileID: 822048682}
 --- !u!61 &108899228
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -480,6 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 656268710}
   - component: {fileID: 656268711}
+  - component: {fileID: 656268712}
   m_Layer: 0
   m_Name: SpawnerLeft
   m_TagString: Untagged
@@ -515,6 +518,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 3593685606282426090, guid: ed5a79f062024af4080210fe5fceb38a, type: 3}
+--- !u!114 &656268712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656268709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 132e4aeeca5094148999610603e1407a, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 656268711}
+          m_TargetAssemblyTypeName: NoteSpawner, Assembly-CSharp
+          m_MethodName: SpawnNote
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &784789814
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625a7e0a02edd841baf5c7cf9f6eaf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalNotes: 0
+  totalNotes: 4
 --- !u!1 &947656879
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0eb38247d12674d854d56f4aa7bd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitKey: 275
+  potionManager: {fileID: 822048682}
 --- !u!61 &981584170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1001,6 +1036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0eb38247d12674d854d56f4aa7bd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitKey: 274
+  potionManager: {fileID: 822048682}
 --- !u!61 &1554492460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1144,6 +1181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0eb38247d12674d854d56f4aa7bd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitKey: 276
+  potionManager: {fileID: 822048682}
 --- !u!61 &1605954773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1281,6 +1320,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1891598807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891598809}
+  - component: {fileID: 1891598808}
+  m_Layer: 0
+  m_Name: LevelSequencer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1891598808
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891598807}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 6a5029e0049948345aa20d756b0a22ae, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 2037455707117734951, guid: 6a5029e0049948345aa20d756b0a22ae, type: 2}
+    value: {fileID: 656268712}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &1891598809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891598807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03969641, y: 0.97609496, z: 8.120514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2132838106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,3 +1416,4 @@ SceneRoots:
   - {fileID: 165479329}
   - {fileID: 461419747}
   - {fileID: 947656881}
+  - {fileID: 1891598809}
