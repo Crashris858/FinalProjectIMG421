@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.Timeline;
 
 public class PotionManager : MonoBehaviour
@@ -15,6 +14,7 @@ public class PotionManager : MonoBehaviour
     
     public void Awake()
     {
+        // automatically count notes from the timeline
         var timelineAsset = timeline.playableAsset as TimelineAsset;
         totalNotes = 0;
 
@@ -65,6 +65,8 @@ public class PotionManager : MonoBehaviour
     void noteProcessed()
     {
         notesProcessed++;
+
+        // only calculate quality after all notes have been processed to avoid premature results
         if(notesProcessed >= totalNotes)
         {
             CalculateQuality();
