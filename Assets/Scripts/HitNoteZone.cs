@@ -13,7 +13,7 @@ public class HitZone : MonoBehaviour
         // check for the hit key press
         if (Input.GetKeyDown(hitKey))
         {
-            if (notesInZone != null && notesInZone.Count > 0)
+            if (notesInZone.Count > 0)
             {
                 GameObject noteToDestroy = notesInZone[0];
                 
@@ -40,7 +40,6 @@ public class HitZone : MonoBehaviour
         if(notesInZone.Contains(other.gameObject))
         {
             notesInZone.Remove(other.gameObject);
-            potionManager.Miss();
         }
     }
 

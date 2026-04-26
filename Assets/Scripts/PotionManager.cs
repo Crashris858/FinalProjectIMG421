@@ -1,26 +1,71 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.Playables;
+using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.Timeline;
 
 public class PotionManager : MonoBehaviour
 {
-    public int totalNotes;
-    private int notesHit;
-    private int notesMissed;
+    public PlayableDirector timeline;
+    public TextMeshProUGUI countdownText;
+    private int totalNotes;
+    private int notesHit = 0;
+    private int notesProcessed = 0;
+    
+    public void Awake()
+    {
+        var timelineAsset = timeline.playableAsset as TimelineAsset;
+        totalNotes = 0;
+
+        foreach (var track in timelineAsset.GetOutputTracks())
+        {
+            foreach (var marker in track.GetMarkers())
+            {
+                if (marker is SignalEmitter) totalNotes++;
+            }
+        }
+
+        //Debug.Log("Total Notes: " + totalNotes);
+    }
+
+    public void Start()
+    {
+        timeline.Stop();
+        StartCoroutine(StartCountdown());
+    }
+
+    IEnumerator StartCountdown()
+    {
+        countdownText.text = "3";
+        yield return new WaitForSeconds(1);
+        countdownText.text = "2";
+        yield return new WaitForSeconds(1);
+        countdownText.text = "1";
+        yield return new WaitForSeconds(1);
+        countdownText.text = "GO!";
+        
+        timeline.Play();
+        
+        yield return new WaitForSeconds(1);
+        countdownText.text = "";
+    }
 
     public void Hit()
     {
         notesHit++;
-        CheckPotionStatus();
+        noteProcessed();
     }
 
     public void Miss()
     {
-        notesMissed++;
-        CheckPotionStatus();
+        noteProcessed();
     }
 
-    void CheckPotionStatus()
+    void noteProcessed()
     {
-        if(notesHit + notesMissed >= totalNotes)
+        notesProcessed++;
+        if(notesProcessed >= totalNotes)
         {
             CalculateQuality();
         }
