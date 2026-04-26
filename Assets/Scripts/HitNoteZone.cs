@@ -11,13 +11,19 @@ public class HitZone : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(hitKey))
+        // check for the hit key press
+        if (Input.GetKeyDown(hitKey))
         {
-            if(notesInZone.Count > 0)
+            if (notesInZone != null && notesInZone.Count > 0)
             {
-                Destroy(notesInZone[0]);
-                notesInZone.RemoveAt(0);
-                potionManager.Hit();
+                GameObject noteToDestroy = notesInZone[0];
+                
+                if (noteToDestroy != null)
+                {
+                    notesInZone.RemoveAt(0);
+                    potionManager.Hit();
+                    Destroy(noteToDestroy);
+                }
             }
         }
     }
@@ -36,8 +42,9 @@ public class HitZone : MonoBehaviour
         {
             notesInZone.Remove(other.gameObject);
             potionManager.Miss();
-            Destroy(other.gameObject);
         }
+
+        Destroy(other.gameObject);
     }
 
 }

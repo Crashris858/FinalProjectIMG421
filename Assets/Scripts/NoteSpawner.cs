@@ -8,6 +8,6 @@ public class NoteSpawner : MonoBehaviour
 
     public void SpawnNote()
     {
-        Instantiate(notePrefab, transform.position, Quaternion.identity);
+        Instantiate(notePrefab, transform.position, notePrefab.transform.rotation);
     }
 }

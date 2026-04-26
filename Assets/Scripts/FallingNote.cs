@@ -7,6 +7,6 @@ public class FallingNote : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
+        transform.Translate(Vector2.down * fallSpeed * Time.deltaTime, Space.World);
     }
 }
