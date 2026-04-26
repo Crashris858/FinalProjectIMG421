@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.Playables;
 using System.Collections;
 using UnityEngine.Timeline;
+using UnityEngine.SceneManagement;
 
 public class PotionManager : MonoBehaviour
 {
@@ -76,6 +77,13 @@ public class PotionManager : MonoBehaviour
     void CalculateQuality()
     {
         float percentHit = (float)notesHit / totalNotes * 100;
+
+        BrewingData.QualityPercent = percentHit;
+        BrewingData.returning = true;
+
+        SceneManager.UnloadSceneAsync("_RhythmGameScene");
+
+        /*
         if(percentHit >= 80)
         {
             Debug.Log("Potion Quality: Perfect (" + percentHit + "%)");
@@ -88,5 +96,6 @@ public class PotionManager : MonoBehaviour
         {
             Debug.Log("Potion Quality: Poor (" + percentHit + "%)");
         }
+        */
     }
 }
