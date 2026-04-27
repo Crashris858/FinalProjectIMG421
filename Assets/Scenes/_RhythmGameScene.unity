@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitKey: 273
   potionManager: {fileID: 822048682}
+  successParticlePrefab: {fileID: 3754414004350409669, guid: 5815efffb6c17d448a84e167f86bb9ff, type: 3}
 --- !u!61 &108899228
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -825,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potionManager: {fileID: 822048682}
+  failParticlePrefab: {fileID: 7118156170282239496, guid: e81a6ee4b0a163142a158d467df88995, type: 3}
 --- !u!1 &981584166
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitKey: 275
   potionManager: {fileID: 822048682}
+  successParticlePrefab: {fileID: 3754414004350409669, guid: 5815efffb6c17d448a84e167f86bb9ff, type: 3}
 --- !u!61 &981584170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1146,6 +1149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitKey: 274
   potionManager: {fileID: 822048682}
+  successParticlePrefab: {fileID: 3754414004350409669, guid: 5815efffb6c17d448a84e167f86bb9ff, type: 3}
 --- !u!61 &1554492460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1291,6 +1295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitKey: 276
   potionManager: {fileID: 822048682}
+  successParticlePrefab: {fileID: 3754414004350409669, guid: 5815efffb6c17d448a84e167f86bb9ff, type: 3}
 --- !u!61 &1605954773
 BoxCollider2D:
   m_ObjectHideFlags: 0
