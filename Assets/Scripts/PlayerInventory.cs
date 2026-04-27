@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<string> inventory = new List<string>();
+    public List<string> ownedIngredients = new List<string>();
 
     void Awake()
     {
         // temporary for testing
-        inventory.Add("Water");
-        inventory.Add("Tulip");
-        inventory.Add("Rose");
-        inventory.Add("Sugar");
-        inventory.Add("Salt");
+        ownedIngredients.Add("Water");
+        ownedIngredients.Add("Tulip");
+        ownedIngredients.Add("Rose");
+        ownedIngredients.Add("Sugar");
+        ownedIngredients.Add("Salt");
     }
 }
