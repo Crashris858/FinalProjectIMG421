@@ -36,6 +36,7 @@ public class MainController : MonoBehaviour
         Potion brewedPotion = null;
 
         // determine potion type based on ingredients
+            // NOTE: MIGHT CHANGE HOW INGREDIENTS ARE STORED/REFERENCED LATER 
         if(BrewingData.Slot2 == "Tulip" && BrewingData.Slot3 == "Sugar")
         {
             brewedPotion = new AntiGravityPotion("Anti-Gravity Potion", quality);
