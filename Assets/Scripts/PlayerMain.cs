@@ -15,6 +15,8 @@ public class PlayerMain : MonoBehaviour
     public Transform Orientation; 
     public float playerHeight; 
     public LayerMask WhatIsGround; 
+    private float DetectionDistace =100f; 
+    public Camera CharacterCamera; 
 
 
     [Header("Set Dynamically")]
@@ -22,6 +24,7 @@ public class PlayerMain : MonoBehaviour
     public bool IsRunning; 
     public Rigidbody CharacterRB; 
     public bool grounded =true; 
+    public PlayerInventory Inventory; 
     float Vertical;
     float Horizontal;
 
@@ -30,7 +33,8 @@ public class PlayerMain : MonoBehaviour
     void Start()
     {
         //pull components 
-        CharacterRB=GetComponent<Rigidbody>(); 
+        CharacterRB=GetComponent<Rigidbody>();
+        Inventory=GetComponent<PlayerInventory>();  
     }
 
     // Update is called once per frame
@@ -48,6 +52,7 @@ public class PlayerMain : MonoBehaviour
 
     void Update()
     {
+        ItemCheck();
         GroundCheck();
         GetInput(); 
     }
@@ -97,6 +102,35 @@ public class PlayerMain : MonoBehaviour
         else
         {
             CharacterRB.drag=0; 
+        }
+    }
+
+    //func: ItemCeheck
+    //desc: checks if an item is in range
+    private void ItemCheck()
+    {
+        //set up ray
+        Ray Ray = CharacterCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitObject; 
+        if(Physics.Raycast(Ray, out hitObject, DetectionDistace))
+        {
+        //check if itemdata class
+            if(hitObject.collider.tag == "Object")
+            {
+                //if e press
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                     print("Key Pressed");
+                    //handle item pickup
+                    ItemData Item = hitObject.collider.gameObject.GetComponentInParent<ItemData>();
+                    if (Item != null)
+                    {
+                        //copy to the InventoryScript
+                        Inventory.AddItem(Item);
+                        Item.OnInteracted();
+                    }
+                }
+            }   
         }
     }
 
