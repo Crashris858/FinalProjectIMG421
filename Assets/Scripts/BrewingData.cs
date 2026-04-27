@@ -1,6 +1,7 @@
 public static class BrewingData
 {
     // ingredient slots
+    public static string Slot1 = "";
     public static string Slot2 = "";
     public static string Slot3 = "";
 

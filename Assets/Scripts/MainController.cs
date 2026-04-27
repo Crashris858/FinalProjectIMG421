@@ -67,6 +67,7 @@ public class MainController : MonoBehaviour
         }
 
         // reset data
+        BrewingData.Slot1 = "";
         BrewingData.Slot2 = "";
         BrewingData.Slot3 = "";
         BrewingData.QualityPercent = 0;

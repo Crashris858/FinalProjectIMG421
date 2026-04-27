@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class IngredientSelector : MonoBehaviour
 {
+    private string ingredientBase = "";
     private string ingredientA = "";
     private string ingredientB = "";
+
+    public void SelectIngredientBase(string ingredient)
+    {
+        ingredientBase = ingredient;
+        Debug.Log("Base Slot Filled with: " + ingredientBase);
+    }
 
     public void SelectIngredientA(string ingredient)
     {
@@ -19,10 +26,11 @@ public class IngredientSelector : MonoBehaviour
 
     public void StartBrewing()
     {
-        if(ingredientA != "" && ingredientB != "")
+        if(ingredientBase != "" && ingredientA != "" && ingredientB != "")
         {
-            Debug.Log("Starting brewing with: " + ingredientA + " and " + ingredientB);
+            Debug.Log("Starting brewing with: " + ingredientBase + ", " + ingredientA + ", " + ingredientB);
             
+            BrewingData.Slot1 = ingredientBase;
             BrewingData.Slot2 = ingredientA;
             BrewingData.Slot3 = ingredientB;
 
@@ -36,6 +44,7 @@ public class IngredientSelector : MonoBehaviour
 
     public void ResetSelections()
     {
+        ingredientBase = "";
         ingredientA = "";
         ingredientB = "";
         Debug.Log("Ingredient selections cleared.");

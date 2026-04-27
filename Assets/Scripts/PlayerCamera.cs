@@ -8,7 +8,8 @@ public class PlayerCamera : MonoBehaviour
     public float CamRotationSpeedY=50f; 
     private float XRotation=0; 
     private float YRotation=0; 
-    public Transform Orientation; 
+    public Transform Orientation;
+    public bool canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+        
         //get mouse movement 
         float HorizontalMouse = Input.GetAxis("Mouse X")*CamRotationSpeedX*Time.deltaTime; 
         float VerticalMouse=Input.GetAxis("Mouse Y")*CamRotationSpeedY*Time.deltaTime; 
