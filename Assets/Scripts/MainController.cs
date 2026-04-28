@@ -1,15 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
     public GameObject mainUI;
+    public GameObject mainCamera;
 
     public void StartRhythmGame()
     {
         mainUI.SetActive(false);
+        mainCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SceneManager.LoadScene("_RhythmGameScene", LoadSceneMode.Additive);
     }
 
@@ -17,7 +21,12 @@ public class MainController : MonoBehaviour
     {
         if (BrewingData.returning)
         {
+            mainCamera.SetActive(true);
             mainUI.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             BrewingData.returning = false;
             ShowBrewingResults();
         }

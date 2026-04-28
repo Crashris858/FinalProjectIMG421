@@ -8,11 +8,17 @@ public class UICauldronManager : MonoBehaviour
     [Header("Setup")]
     public PlayerInventory inventory;
     public GameObject buttonPrefab;
+    public Button startButton;
     
     [Header("Containers")]
     public Transform containerIn1;
     public Transform containerIn2;
     public Transform containerIn3;
+
+    public void Start()
+    {
+        startButton.interactable = false;
+    }
 
     public void RefreshUI()
     {
@@ -21,6 +27,7 @@ public class UICauldronManager : MonoBehaviour
         foreach (Transform child in containerIn2) Destroy(child.gameObject);
         foreach (Transform child in containerIn3) Destroy(child.gameObject);
 
+        // stores the name and counts of each ingredient
         Dictionary<string, int> counts = new Dictionary<string, int>();
         foreach(string item in inventory.ownedIngredients)
         {
@@ -74,7 +81,17 @@ public class UICauldronManager : MonoBehaviour
         else if (slotNumber == 2) BrewingData.Slot2 = name;
         else if (slotNumber == 3) BrewingData.Slot3 = name;
 
-        Debug.Log($"Recipe Update: Slot {slotNumber} is now {name}.");
+        //Debug.Log($"Recipe Update: Slot {slotNumber} is now {name}.");
+        ValidateRecipe();
+    }
+
+    void ValidateRecipe()
+    {
+        bool isValid = !string.IsNullOrEmpty(BrewingData.Slot1) && 
+                       !string.IsNullOrEmpty(BrewingData.Slot2) && 
+                       !string.IsNullOrEmpty(BrewingData.Slot3);
+
+        startButton.interactable = isValid;
     }
 }
 
