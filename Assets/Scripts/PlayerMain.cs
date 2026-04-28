@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UIElements;
 
 public class PlayerMain : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    public float Speed=10f;
-    public float JumpForce=10f; 
+    public float Speed=15f;
+    public float MaxSpeed=20f; 
+    public float JumpForce=30f; 
     public float PlayerDrag = 5f; 
     public KeyCode JumpButton = KeyCode.Space;
     public Transform Orientation; 
@@ -27,6 +29,7 @@ public class PlayerMain : MonoBehaviour
     public PlayerInventory Inventory; 
     float Vertical;
     float Horizontal;
+    Potion CurrentPotion = new AntiGravityPotion("Gravity", Potion.QualityLevel.Good);
 
 
     // Start is called before the first frame update
@@ -46,8 +49,18 @@ public class PlayerMain : MonoBehaviour
             //Changestate: airborne
             jump(); 
         }
+        //input: use potion 
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(CurrentPotion!=null)
+            {
+                CurrentPotion.ApplyEffect(this); 
+                CurrentPotion=null; 
+            }
+        }
         //state: Walking 
         MovePlayer();
+        
     }
 
     void Update()
@@ -55,6 +68,7 @@ public class PlayerMain : MonoBehaviour
         ItemCheck();
         GroundCheck();
         GetInput(); 
+        SpeedCheck();
     }
 
     //func:Input 
@@ -82,8 +96,6 @@ public class PlayerMain : MonoBehaviour
     //desc: allows the player to jump 
     private void jump()
     {
-        //set y velocity to base zero 
-        CharacterRB.velocity = new Vector3(CharacterRB.velocity.x, 0, CharacterRB.velocity.z);
 
         //add upward force(impulse)
         CharacterRB.AddForce(transform.up*JumpForce, ForceMode.Impulse);
@@ -102,6 +114,21 @@ public class PlayerMain : MonoBehaviour
         else
         {
             CharacterRB.drag=0; 
+        }
+    }
+
+    //func: speedCheck 
+    //desc: takes the player's total speed at the given moment and limits
+    private void SpeedCheck()
+    {
+        //get magnitude of velocity vector 
+        Vector3 speedVector = new Vector3(CharacterRB.velocity.x,0f,CharacterRB.velocity.z);
+
+        if(speedVector.magnitude>Speed)
+        {
+           //normalize 
+           Vector3 limitVelocity = speedVector.normalized*Speed;
+           CharacterRB.velocity= new Vector3(limitVelocity.x, CharacterRB.velocity.y, limitVelocity.z);
         }
     }
 
