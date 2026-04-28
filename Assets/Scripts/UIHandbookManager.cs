@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class UIHandbookManager : MonoBehaviour
 {
@@ -46,13 +45,13 @@ public class UIHandbookManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            //PlayerMain.instance.canMove = false;
+            PlayerMain.Instance.canMove = false;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            //PlayerMain.instance.canMove = true;
+            PlayerMain.Instance.canMove = true;
         }
     }
 
