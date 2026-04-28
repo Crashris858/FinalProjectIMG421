@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIHandbookManager : MonoBehaviour
 {
@@ -12,6 +13,17 @@ public class UIHandbookManager : MonoBehaviour
     [Header("Containers")]
     public Transform inventoryContainer;
     public Transform indexContainer;
+
+    [Header("Tab Visuals")]
+    public Image inventoryTabImage;
+    public Image indexTabImage;
+    public Color activeColor;
+    public Color inactiveColor;
+
+    [Header("Potion Detail Panel")]
+    public GameObject detailsPanel;
+    public TextMeshProUGUI detailsName;
+    public TextMeshProUGUI detailsDescription;
 
     private bool isOpen;
 
@@ -49,6 +61,7 @@ public class UIHandbookManager : MonoBehaviour
         }
         else
         {
+            detailsPanel.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             PlayerMain.Instance.canMove = true;
@@ -59,6 +72,11 @@ public class UIHandbookManager : MonoBehaviour
     {
         inventoryContainer.gameObject.SetActive(true);
         indexContainer.gameObject.SetActive(false);
+        detailsPanel.SetActive(false);
+
+        inventoryTabImage.color = activeColor;
+        indexTabImage.color = inactiveColor;
+
         RefreshInventory();
     }
 
@@ -66,6 +84,10 @@ public class UIHandbookManager : MonoBehaviour
     {
         inventoryContainer.gameObject.SetActive(false);
         indexContainer.gameObject.SetActive(true);
+
+        inventoryTabImage.color = inactiveColor;
+        indexTabImage.color = activeColor;
+
         RefreshIndex();
     }
 
@@ -85,6 +107,7 @@ public class UIHandbookManager : MonoBehaviour
         {
             GameObject obj = Instantiate(entryPrefab, inventoryContainer);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = $"{entry.Key} x{entry.Value}";
+            obj.GetComponent<Button>().enabled = false;
         }
     }
 
@@ -96,8 +119,26 @@ public class UIHandbookManager : MonoBehaviour
         {
             GameObject obj = Instantiate(entryPrefab, indexContainer);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = potionName;
-            
-            // logic for clicks go here
+
+            Button btn = obj.GetComponent<Button>();
+            btn.enabled = true;
+            btn.onClick.AddListener(() => ShowPotionDetails(potionName));
         }
+    }
+
+    public void ShowPotionDetails(string name)
+    {
+        detailsPanel.SetActive(true);
+        detailsName.text = name;
+        detailsDescription.text = GetDescriptionByName(name);
+    }
+
+    string GetDescriptionByName(string name)
+    {
+        if (name.Contains("Anti-Gravity")) return "Grants temporary anti-gravity effect, allowing you to float.";
+        if (name.Contains("Speed")) return "Increases movement speed for a short duration.";
+        if (name.Contains("Fire Resistance")) return "Grants temporary immunity to fire damage.";
+        if (name.Contains("Freeze")) return "Can be used to freeze water for a short duration.";
+        return "Unknown potion.";
     }
 }
