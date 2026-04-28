@@ -5,12 +5,12 @@ public class HitZone : MonoBehaviour
 {
     public KeyCode hitKey;
     public PotionManager potionManager;
+    public ParticleSystem successParticlePrefab;
 
     private List<GameObject> notesInZone = new List<GameObject>();
 
     void Update()
     {
-        // check for the hit key press
         if (Input.GetKeyDown(hitKey))
         {
             if (notesInZone.Count > 0)
@@ -20,6 +20,14 @@ public class HitZone : MonoBehaviour
                 if (noteToDestroy != null)
                 {
                     notesInZone.RemoveAt(0);
+                    
+                    if (successParticlePrefab != null)
+                    {
+                        ParticleSystem particles = Instantiate(successParticlePrefab, noteToDestroy.transform.position, Quaternion.identity);
+                        particles.Play();
+                        Destroy(particles.gameObject, particles.main.duration + particles.main.startLifetime.constant);
+                    }
+                    
                     potionManager.Hit();
                     Destroy(noteToDestroy);
                 }
