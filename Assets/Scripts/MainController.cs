@@ -7,11 +7,13 @@ public class MainController : MonoBehaviour
     public GameObject mainCamera;
     private PlayerMain _player;
     private PlayerCamera _playerCam;
+    private Cauldron _currentCauldron;
 
     public void Start()
     {
         _player = FindObjectOfType<PlayerMain>();
         _playerCam = mainCamera.GetComponent<PlayerCamera>();
+        _currentCauldron = FindObjectOfType<Cauldron>();
     }
 
     public void StartRhythmGame()
@@ -31,6 +33,7 @@ public class MainController : MonoBehaviour
     {
         if (BrewingData.returning)
         {
+            _currentCauldron.CloseCauldronUI();
             mainUI.SetActive(true);
 
             _playerCam.canMove = true;
