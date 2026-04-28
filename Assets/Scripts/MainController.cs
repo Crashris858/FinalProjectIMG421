@@ -5,13 +5,11 @@ public class MainController : MonoBehaviour
 {
     public GameObject mainUI;
     public GameObject mainCamera;
-    private PlayerMain _player;
     private PlayerCamera _playerCam;
     private Cauldron _currentCauldron;
 
     public void Start()
     {
-        _player = FindObjectOfType<PlayerMain>();
         _playerCam = mainCamera.GetComponent<PlayerCamera>();
         _currentCauldron = FindObjectOfType<Cauldron>();
     }
@@ -23,7 +21,7 @@ public class MainController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _player.canMove = false;
+        PlayerMain.Instance.canMove = false;
         _playerCam.canMove = false;
 
         SceneManager.LoadScene("_RhythmGameScene", LoadSceneMode.Additive);
@@ -37,7 +35,7 @@ public class MainController : MonoBehaviour
             mainUI.SetActive(true);
 
             _playerCam.canMove = true;
-            _player.canMove = true;
+            PlayerMain.Instance.canMove = true;
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -81,17 +79,23 @@ public class MainController : MonoBehaviour
 
         if(brewedPotion != null)
         {
-            Debug.Log($"Brewed {brewedPotion.potionName}");
-            Debug.Log($"Quality: {brewedPotion.quality} ({BrewingData.QualityPercent}%)");
-            Debug.Log($"Description: {brewedPotion.description}");
+            //Debug.Log($"Brewed {brewedPotion.potionName}");
+            //Debug.Log($"Quality: {brewedPotion.quality} ({BrewingData.QualityPercent}%)");
+            //Debug.Log($"Description: {brewedPotion.description}");
+            if(!BrewingData.DiscoveredPotions.Contains(brewedPotion.potionName))
+            {
+                BrewingData.DiscoveredPotions.Add(brewedPotion.potionName);
+                //Debug.Log("New Potion Discovered: " + brewedPotion.potionName);
+            }
 
-            _player.CurrentPotion = brewedPotion;
+            // updates the player inventory
+            PlayerMain.Instance.CurrentPotion = brewedPotion;
             if(!string.IsNullOrEmpty(BrewingData.Slot1))
-                _player.Inventory.ownedIngredients.Remove(BrewingData.Slot1);
+                PlayerMain.Instance.Inventory.ownedIngredients.Remove(BrewingData.Slot1);
             if(!string.IsNullOrEmpty(BrewingData.Slot2))
-                _player.Inventory.ownedIngredients.Remove(BrewingData.Slot2);
+                PlayerMain.Instance.Inventory.ownedIngredients.Remove(BrewingData.Slot2);
             if(!string.IsNullOrEmpty(BrewingData.Slot3))
-                _player.Inventory.ownedIngredients.Remove(BrewingData.Slot3);
+                PlayerMain.Instance.Inventory.ownedIngredients.Remove(BrewingData.Slot3);
         }
 
         // reset brewing data
