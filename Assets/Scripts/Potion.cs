@@ -1,14 +1,12 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 [System.Serializable]
 public abstract class Potion
 {
     public string potionName;
     public string description;
-    public float effectDuration =10f; 
+    public float effectDuration = 10f; 
     public QualityLevel quality;
     public Color liquidColor; 
 

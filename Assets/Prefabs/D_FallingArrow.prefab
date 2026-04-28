@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3710405159291485396}
   - component: {fileID: 6379545831185203251}
   - component: {fileID: 6570077086573458209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: D_FallingArrow
   m_TagString: Note
   m_Icon: {fileID: 0}
