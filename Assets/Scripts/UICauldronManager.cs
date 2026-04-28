@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UICauldronManager : MonoBehaviour
 {
@@ -18,8 +19,8 @@ public class UICauldronManager : MonoBehaviour
         foreach (Transform child in containerIn1) Destroy(child.gameObject);
         foreach (Transform child in containerIn2) Destroy(child.gameObject);
 
-        // 2. Spawn buttons based on inventory
-        foreach (string itemName in inventory.ownedIngredients)
+        //2. Spawn buttons based on inventory
+        foreach (String itemName in inventory.ownedIngredients)
         {
             bool isSlot2 = (itemName == "Tulip" || itemName == "Rose");
             bool isSlot3 = (itemName == "Sugar" || itemName == "Salt");
@@ -49,3 +50,4 @@ public class UICauldronManager : MonoBehaviour
         Debug.Log($"Recipe Update: Slot {(isSlot2 ? "2" : "3")} is now {name}");
     }
 }
+
