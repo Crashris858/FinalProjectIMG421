@@ -81,9 +81,14 @@ public class MainController : MonoBehaviour
 
         if(brewedPotion != null)
         {
-            Debug.Log($"Brewed {brewedPotion.potionName}");
-            Debug.Log($"Quality: {brewedPotion.quality} ({BrewingData.QualityPercent}%)");
-            Debug.Log($"Description: {brewedPotion.description}");
+            //Debug.Log($"Brewed {brewedPotion.potionName}");
+            //Debug.Log($"Quality: {brewedPotion.quality} ({BrewingData.QualityPercent}%)");
+            //Debug.Log($"Description: {brewedPotion.description}");
+            if(!BrewingData.DiscoveredPotions.Contains(brewedPotion.potionName))
+            {
+                BrewingData.DiscoveredPotions.Add(brewedPotion.potionName);
+                Debug.Log("New Potion Discovered: " + brewedPotion.potionName);
+            }
 
             _player.CurrentPotion = brewedPotion;
             if(!string.IsNullOrEmpty(BrewingData.Slot1))
