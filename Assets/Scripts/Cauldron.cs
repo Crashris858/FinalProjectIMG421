@@ -12,6 +12,18 @@ public class Cauldron : MonoBehaviour
     private bool isPlayerInRange = false;
     private bool isUiOpen = false;
 
+    void Start()
+    {
+        isPlayerInRange = false;
+        isUiOpen = false;
+        
+        if (interactionPrompt != null)
+            interactionPrompt.SetActive(false);
+            
+        if (cauldronCanvas != null)
+            cauldronCanvas.SetActive(false);
+    }
+
     void Update()
     {
         // check in range of cauldron
