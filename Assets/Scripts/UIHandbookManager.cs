@@ -25,6 +25,15 @@ public class UIHandbookManager : MonoBehaviour
     public TextMeshProUGUI detailsName;
     public TextMeshProUGUI detailsDescription;
 
+    // all the possible potions for the index
+    public List<string> allPossiblePotions = new List<string> 
+    { 
+        "Anti-Gravity Potion", 
+        "Fire Resistance Potion", 
+        "Speed Potion", 
+        "Freeze Potion" 
+    };
+
     private bool isOpen;
 
     void Start()
@@ -115,14 +124,24 @@ public class UIHandbookManager : MonoBehaviour
     {
         foreach (Transform child in indexContainer) Destroy(child.gameObject);
 
-        foreach (string potionName in BrewingData.DiscoveredPotions)
+        foreach (string potionName in allPossiblePotions)
         {
             GameObject obj = Instantiate(entryPrefab, indexContainer);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = potionName;
-
+            TextMeshProUGUI label = obj.GetComponentInChildren<TextMeshProUGUI>();
             Button btn = obj.GetComponent<Button>();
-            btn.enabled = true;
-            btn.onClick.AddListener(() => ShowPotionDetails(potionName));
+
+            // check if the potion has been discovered yet
+            if (BrewingData.DiscoveredPotions.Contains(potionName))
+            {
+                label.text = potionName;
+                btn.interactable = true;
+                btn.onClick.AddListener(() => ShowPotionDetails(potionName));
+            }
+            else
+            {
+                label.text = "???";
+                btn.interactable = false; 
+            }
         }
     }
 
