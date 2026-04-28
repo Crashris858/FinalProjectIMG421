@@ -37,23 +37,26 @@ public class UIHandbookManager : MonoBehaviour
     private bool isOpen;
 
     void Start()
-{
-    if (handbookPanel != null)
     {
-        handbookPanel.SetActive(false);
+        // by default hides the handbook
+        if (handbookPanel != null)
+        {
+            handbookPanel.SetActive(false);
+        }
+        
+        isOpen = false;
     }
-    
-    isOpen = false;
-}
 
     void Update()
     {
+        // F to open handbook
         if(Input.GetKeyDown(KeyCode.F))
         {
             ToggleHandbook();
         }
     }
 
+    // opens the handbook UI
     public void ToggleHandbook()
     {
         isOpen = !isOpen;
@@ -77,6 +80,7 @@ public class UIHandbookManager : MonoBehaviour
         }
     }
 
+    // switches to inventory tab and updates visuals
     public void ShowInventoryTab()
     {
         inventoryContainer.gameObject.SetActive(true);
@@ -89,6 +93,7 @@ public class UIHandbookManager : MonoBehaviour
         RefreshInventory();
     }
 
+    // switches to index tab and updates visuals
     public void ShowIndexTab()
     {
         inventoryContainer.gameObject.SetActive(false);
@@ -100,11 +105,13 @@ public class UIHandbookManager : MonoBehaviour
         RefreshIndex();
     }
 
+    // handles the inventory tab
     void RefreshInventory()
     {
+        // clears old entries
         foreach (Transform child in inventoryContainer) Destroy(child.gameObject);
 
-        // Reusing your dictionary logic
+        // dictionary that stores (name:count)
         Dictionary<string, int> counts = new Dictionary<string, int>();
         foreach (string item in inventory.ownedIngredients)
         {
@@ -112,6 +119,7 @@ public class UIHandbookManager : MonoBehaviour
             else counts.Add(item, 1);
         }
 
+        // displays all ingredients with counts inside the inventory
         foreach (var entry in counts)
         {
             GameObject obj = Instantiate(entryPrefab, inventoryContainer);
@@ -120,10 +128,13 @@ public class UIHandbookManager : MonoBehaviour
         }
     }
 
+    // handles the index tab
     void RefreshIndex()
     {
+        // clears old entries
         foreach (Transform child in indexContainer) Destroy(child.gameObject);
 
+        // displays all possible potions, including undiscovered
         foreach (string potionName in allPossiblePotions)
         {
             GameObject obj = Instantiate(entryPrefab, indexContainer);
@@ -145,6 +156,7 @@ public class UIHandbookManager : MonoBehaviour
         }
     }
 
+    // gets the name and potion description
     public void ShowPotionDetails(string name)
     {
         detailsPanel.SetActive(true);

@@ -85,9 +85,10 @@ public class MainController : MonoBehaviour
             if(!BrewingData.DiscoveredPotions.Contains(brewedPotion.potionName))
             {
                 BrewingData.DiscoveredPotions.Add(brewedPotion.potionName);
-                Debug.Log("New Potion Discovered: " + brewedPotion.potionName);
+                //Debug.Log("New Potion Discovered: " + brewedPotion.potionName);
             }
 
+            // updates the player inventory
             PlayerMain.Instance.CurrentPotion = brewedPotion;
             if(!string.IsNullOrEmpty(BrewingData.Slot1))
                 PlayerMain.Instance.Inventory.ownedIngredients.Remove(BrewingData.Slot1);

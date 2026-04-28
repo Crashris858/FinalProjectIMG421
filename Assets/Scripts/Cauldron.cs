@@ -14,6 +14,7 @@ public class Cauldron : MonoBehaviour
 
     void Start()
     {
+        // defaults to hide UI and prompt
         isPlayerInRange = false;
         isUiOpen = false;
         
@@ -48,7 +49,7 @@ public class Cauldron : MonoBehaviour
 
         uiCauldronManager.RefreshUI();
 
-        // disable player control
+        // disable player controls
         playerCam.canMove = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -76,6 +77,7 @@ public class Cauldron : MonoBehaviour
         }
     }
 
+    // ensures prompt and UI are hidden when player leaves range
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

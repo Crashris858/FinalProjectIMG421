@@ -5,6 +5,7 @@ public class MissBoundary : MonoBehaviour
     public PotionManager potionManager;
     public ParticleSystem failParticlePrefab;
 
+    // checks if a note enters the miss boundary, if so it calls the miss function in potion manager and destroys the note
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Note"))
