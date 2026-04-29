@@ -49,6 +49,12 @@ public class Cauldron : MonoBehaviour
         interactionPrompt.SetActive(false);
         hotbar.SetActive(false);
 
+        UIHandbookManager handbook = FindObjectOfType<UIHandbookManager>();
+        if(handbook != null && handbook.handbookPanel.activeSelf)
+        {
+            handbook.ToggleHandbook(); 
+        }
+
         uiCauldronManager.RefreshUI();
 
         // disable player controls

@@ -66,6 +66,7 @@ public class UIHandbookManager : MonoBehaviour
 
         if(isOpen)
         {
+            FindObjectOfType<Cauldron>()?.CloseCauldronUI();
             ShowInventoryTab();
 
             Cursor.lockState = CursorLockMode.None;
