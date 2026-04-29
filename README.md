@@ -1,86 +1,69 @@
-# Potion Game
-## By Tyler, Carson, and Makaela
+# Potion Motion!
+## IMG 421 Final Project
+### Developed By: Tyler, Carson, Makaela
 
 
-# Description: 
-
-## Overview: 
-  There are many complicated lives one can choose to live: a game designer, a system desginer, an artist, or even a semi-truck driver. This little witch
-
-  has decided to live the simple life. There are many discoveries to be made using nature's bountiful resources. 
-  
-  Go through a day in their life collecting materials, crafting potions, and exploring! 
+## Storyline: 
+  There are many complicated lives one can choose to live.. a game designer, system creator, artist, or even a trucker. <br><br>
+  This little witch has decided to live a simple life, close to nature. There are many discoveries to be made using the world's bountiful resources. <br><br>
+  Experience a day in their life exploring, collecting materials, and crafting potions!<br><br>
+-Storyline by Carson
+## Description: 
+In this game the player may explore the world to find resources that may be used to craft different kinds of potions. Each potion crafted opens up new opportunities and exciting effects.
 
 ## Controls: 
-<p> First Person Movement: Mouse </p>
+### Movement: 
+Look Around: Mouse <br>
+Walk: W, A, S, D or Arrow Keys <br>
+Jump: Space <br>
+### Interactions:
+Use Potion: Left Mouse Button <br>
+Pick Up/Interact: E <br>
+### Open Menu:
+Check Menu: F
 
-<p> Moving: W,A,S, and D</p>
-
-<p> Jumping: Space Bar</p>
-
-<p> Use potion: Left-click</p>
-
-<p> Pick up items/Interact: E</p>
-
-<p>Check Menu: F</p>
-
-## Item Menus:
-
-There are various menus to keep track of your  items.
-
-Hotbar: keeps track of your current potions. 
-
-Cauldron: Allows you to mix you found ingredients in order to create potions. 
-
-Inventory: Keeps track of your found ingredients.
-
-Potion Index: Keeps track of your discovered potions. 
+## UI Menus:
+Inventory: Displays gathered ingredients<br>
+Cauldron: Mix gathered ingredients to create potions<br>
+Hotbar: Displays current Potions<br>
+Potion Index: Lists discovered potions<br>
 
 ## Brewing Minigame:
-
-Intiate brewing through the cauldron. 
-
-Play in a rhythm game in order to determine the potios quality. 
-
-Notes will be hit with up, down, left, and righ key. 
+The potion brewing mini game may be initiated by interacting with the cauldron. Ingredients gathered will determine the potion type. Once the game starts, the user plays a rhythm game to determine the potions quality.
 
 ## A World to Explore:
 
-Use your potions to explore this serene forest to collect more resources. 
+Use your potions to explore this serene forest and collect more resources. 
 
 ## Collect Them All! 
+#### Anti-Gravity:
+A cyan potion that inverses gravity!
+#### Speed:
+A yellow potion that increases the players speed!
+#### Fire Resistance:
+A red potion that gives the player fire resistance!
+#### Freeze:
+A blue potion that freezes water it is thrown at!
 
-There are a total of four potions to collect: 
+## How To Play:
+1. Collect Ingredients - Walk up to ingredients & click E to collect
+2. Brew Potions - With ingredients in your inventory interact with the cauldron
+3. Use Potions - 
 
-Anti-Gravity: Reverses gravity -Cyan. 
+## Assets:
+### Audio:
+[Grab Clothes/Foley -Lucas_lesc](https://pixabay.com/users/lucas_lesc-49153745/)
 
-Speed: Increases speed -Yellow.
+### Art :
+#### Unity Packages - 
 
-Fire Resistance: Allows you to walk in fire -Red.
-
-Freeze: If thrown potion hits water, the water freezes -Blue 
-
-## Assets Used 
-
-### Audio 
-
-Grab Clothes/Foley -Lucas_lesc 
-https://pixabay.com/users/lucas_lesc-49153745/
-
-
-### Art 
-
-
-### Unity Packages
-
-The Wood Cabin - Studio KrokiDana 
+The Wood Cabin -Studio KrokiDana 
 
 Low Poly Enviorment - Nature Free -Polytope Studio 
 
-Free Fantasy Terrain Textures - 3D Haven
+Free Fantasy Terrain Textures -3D Haven
 
 
 
-## ITCH Link 
-https://crashris.itch.io/potiongame
-
+## Game:
+[Link to Play Potion Motion](https://crashris.itch.io/potiongame)
