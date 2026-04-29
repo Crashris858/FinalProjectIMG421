@@ -6588,6 +6588,7 @@ MonoBehaviour:
   handbookPanel: {fileID: 824522063}
   inventory: {fileID: 792598332}
   entryPrefab: {fileID: 3898892078155002817, guid: 87ed21adae486b64c9400b5f09076e1c, type: 3}
+  playerCam: {fileID: 2038218324}
   inventoryContainer: {fileID: 112924665}
   indexContainer: {fileID: 728756217}
   inventoryTabImage: {fileID: 1831234071}

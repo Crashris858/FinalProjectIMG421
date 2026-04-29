@@ -10,6 +10,7 @@ public class UIHandbookManager : MonoBehaviour
     public GameObject handbookPanel;
     public PlayerInventory inventory;
     public GameObject entryPrefab;
+    public PlayerCamera playerCam;
 
     [Header("Containers")]
     public Transform inventoryContainer;
@@ -62,7 +63,6 @@ public class UIHandbookManager : MonoBehaviour
     {
         isOpen = !isOpen;
         handbookPanel.SetActive(isOpen);
-        hotbar.SetActive(!isOpen);
 
         if(isOpen)
         {
@@ -72,7 +72,9 @@ public class UIHandbookManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+            playerCam.canMove = false;
             PlayerMain.Instance.canMove = false;
+            hotbar.SetActive(false);
         }
         else
         {
@@ -80,6 +82,8 @@ public class UIHandbookManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             PlayerMain.Instance.canMove = true;
+            playerCam.canMove = true;
+            hotbar.SetActive(true);
         }
     }
 

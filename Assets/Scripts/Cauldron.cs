@@ -47,7 +47,6 @@ public class Cauldron : MonoBehaviour
         isUiOpen = true;
         cauldronCanvas.SetActive(true);
         interactionPrompt.SetActive(false);
-        hotbar.SetActive(false);
 
         UIHandbookManager handbook = FindObjectOfType<UIHandbookManager>();
         if(handbook != null && handbook.handbookPanel.activeSelf)
@@ -56,6 +55,7 @@ public class Cauldron : MonoBehaviour
         }
 
         uiCauldronManager.RefreshUI();
+        hotbar.SetActive(false);
 
         // disable player controls
         playerCam.canMove = false;
