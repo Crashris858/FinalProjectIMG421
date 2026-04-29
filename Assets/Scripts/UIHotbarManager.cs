@@ -61,7 +61,7 @@ public class UIHotbarManager : MonoBehaviour
             if (potionInSlot != null)
             {
                 // We have a potion! Show the icon.
-                slots[i].iconImage.color = Color.red; 
+                slots[i].iconImage.color = PlayerMain.Instance.potionBelt[i].liquidColor; 
                 
                 // Note: You'll eventually want a 'Sprite' property on your Potion class
                 // slots[i].iconImage.sprite = potionInSlot.potionIcon; 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class UIHandbookManager : MonoBehaviour
 {
@@ -152,6 +153,21 @@ public class UIHandbookManager : MonoBehaviour
             if (BrewingData.DiscoveredPotions.Contains(potionName))
             {
                 label.text = potionName;
+                switch (potionName)
+                {
+                case "Anti-Gravity Potion":
+                label.color=Color.cyan;
+                break;
+                case  "Fire Resistance Potion":
+                label.color=Color.red;
+                break;
+                case "Speed Potion":
+                label.color=Color.yellow;
+                break;
+                case "Freeze Potion":
+                label.color=Color.blue;
+                break; 
+                };
                 btn.interactable = true;
                 btn.onClick.AddListener(() => ShowPotionDetails(potionName));
             }
