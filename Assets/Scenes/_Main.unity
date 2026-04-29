@@ -1188,128 +1188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae7205e4fdd01a4691dde356b4c3485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &913989951
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 913989955}
-  - component: {fileID: 913989954}
-  - component: {fileID: 913989953}
-  - component: {fileID: 913989956}
-  - component: {fileID: 913989957}
-  m_Layer: 0
-  m_Name: Cauldron
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &913989953
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913989951}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9debcc8974a9caa459915419ca191aca, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &913989954
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913989951}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &913989955
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913989951}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.78, y: 1.36, z: -22.35}
-  m_LocalScale: {x: 2, y: 1.5, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &913989956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913989951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501f2e95edbb28146873414d234e353d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cauldronCanvas: {fileID: 254986301}
-  interactionPrompt: {fileID: 1142250170}
-  uiCauldronManager: {fileID: 452554576}
-  playerCam: {fileID: 1905440934}
---- !u!135 &913989957
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913989951}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &974783906
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +2940,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092515964}
   m_CullTransparentMesh: 1
+--- !u!1001 &6576176345021030838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -22.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389033005921932903, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450656544669609699, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: m_Name
+      value: Cauldron
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415535974327036111, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1905440934}
+    - target: {fileID: 4415535974327036111, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: cauldronCanvas
+      value: 
+      objectReference: {fileID: 254986301}
+    - target: {fileID: 4415535974327036111, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: interactionPrompt
+      value: 
+      objectReference: {fileID: 1142250170}
+    - target: {fileID: 4415535974327036111, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
+      propertyPath: uiCauldronManager
+      value: 
+      objectReference: {fileID: 452554576}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57f9fc51b6f55014dadaaceec7187fcb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3071,7 +3022,7 @@ SceneRoots:
   - {fileID: 1518892659}
   - {fileID: 1196161}
   - {fileID: 1659137663}
-  - {fileID: 913989955}
+  - {fileID: 6576176345021030838}
   - {fileID: 1905440933}
   - {fileID: 402167505}
   - {fileID: 1503756115}
