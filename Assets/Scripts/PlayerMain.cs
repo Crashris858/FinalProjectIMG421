@@ -79,11 +79,15 @@ public class PlayerMain : MonoBehaviour
 
     void Update()
     {
-        ItemCheck();
-        GroundCheck();
         GetInput(); 
+        GroundCheck();
         SpeedCheck();
         YCheck(); 
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            ItemCheck();
+        }
 
         if(Input.GetKeyDown(KeyCode.Space)) IsJumping = true;
 
@@ -180,32 +184,23 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    //func: ItemCeheck
-    //desc: checks if an item is in range
+    //func: ItemCheck
+    //desc: checks if an item is in range and picks it up when E is pressed
     private void ItemCheck()
     {
-        //set up ray
-        Ray Ray = CharacterCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitObject; 
-        if(Physics.Raycast(Ray, out hitObject, DetectionDistace))
+        // raycast only when the player attempts interaction
+        Ray ray = CharacterCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hitObject, DetectionDistace))
         {
-        //check if item data class
-            if(hitObject.collider.tag == "Object")
+            if (hitObject.collider.CompareTag("Object") && !EventSystem.current.IsPointerOverGameObject())
             {
-                //if e press
-                if(Input.GetKeyDown(KeyCode.E))
+                ItemData item = hitObject.collider.gameObject.GetComponentInParent<ItemData>();
+                if (item != null)
                 {
-                    //print("Key Pressed");
-                    //handle item pickup
-                    ItemData Item = hitObject.collider.gameObject.GetComponentInParent<ItemData>();
-                    if (Item != null)
-                    {
-                        //copy to the InventoryScript
-                        Inventory.AddItem(Item);
-                        Item.OnInteracted();
-                    }
+                    Inventory.AddItem(item);
+                    item.OnInteracted();
                 }
-            }   
+            }
         }
     }
 

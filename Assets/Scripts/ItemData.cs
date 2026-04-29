@@ -14,12 +14,12 @@ public class ItemData : MonoBehaviour
         //get components 
         meshRenderer=GetComponentInChildren<MeshRenderer>();
         sphereCollider=GetComponentInChildren<SphereCollider>();
-
     }
-    public void FixedUpdate()
+
+    void Update()
     {
-        //rotate 
-        this.transform.RotateAround(transform.position,Vector3.up, 1f);
+        // rotate the item in normal frame update rather than physics update
+        transform.Rotate(Vector3.up, 45f * Time.deltaTime, Space.World);
     }
 
     public void OnInteracted()
