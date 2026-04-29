@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class IngredientSelector : MonoBehaviour
 {
+
     private string ingredientBase = "";
     private string ingredientA = "";
     private string ingredientB = "";
@@ -47,6 +48,6 @@ public class IngredientSelector : MonoBehaviour
         ingredientBase = "";
         ingredientA = "";
         ingredientB = "";
-        Debug.Log("Ingredient selections cleared.");
+        //Debug.Log("Ingredient selections cleared.");
     }
 }
