@@ -29,6 +29,7 @@ public class MainController : MonoBehaviour
 
     public void Update()
     {
+        // checks for when the user returns from the minigame to handle results
         if (BrewingData.returning)
         {
             _currentCauldron.CloseCauldronUI();
@@ -89,7 +90,8 @@ public class MainController : MonoBehaviour
             }
 
             // updates the player inventory
-            PlayerMain.Instance.CurrentPotion = brewedPotion;
+            PlayerMain.Instance.AddPotionToBelt(brewedPotion);
+
             if(!string.IsNullOrEmpty(BrewingData.Slot1))
                 PlayerMain.Instance.Inventory.ownedIngredients.Remove(BrewingData.Slot1);
             if(!string.IsNullOrEmpty(BrewingData.Slot2))

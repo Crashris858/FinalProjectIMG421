@@ -1,8 +1,34 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMain : MonoBehaviour
 {
     public static PlayerMain Instance { get; private set; }
+
+    [Header("Inventory & UI")]
+    public Potion[] potionBelt = new Potion[5]; 
+    public int activeSlotIndex = 0;
+    private UIHotbarManager _hotbar; // Reference for optimization
+
+    [Header("Movement Settings")]
+    public float Speed = 15f;
+    public float JumpForce = 30f; 
+    public float PlayerDrag = 5f; 
+    public Transform Orientation; 
+    public float playerHeight; 
+    public LayerMask WhatIsGround; 
+    public Camera CharacterCamera; 
+
+    [Header("Status")]
+    public bool IsJumping = false; 
+    public Rigidbody CharacterRB; 
+    public bool grounded = true; 
+    public PlayerInventory Inventory; 
+    public bool canMove = true;
+
+    private float Vertical;
+    private float Horizontal;
+    private float DetectionDistace = 100f;
 
     private void Awake()
     {
@@ -16,37 +42,13 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    [Header("Set in Inspector")]
-    public float Speed = 15f;
-    public float MaxSpeed = 20f; 
-    public float JumpForce=30f; 
-    public float PlayerDrag = 5f; 
-    public KeyCode JumpButton = KeyCode.Space;
-    public Transform Orientation; 
-    public float playerHeight; 
-    public LayerMask WhatIsGround; 
-    private float DetectionDistace = 100f; 
-    public Camera CharacterCamera; 
-
-
-    [Header("Set Dynamically")]
-    public bool IsJumping = false; 
-    public bool IsRunning; 
-    public Rigidbody CharacterRB; 
-    public bool grounded = true; 
-    public PlayerInventory Inventory; 
-    float Vertical;
-    float Horizontal;
-    public Potion CurrentPotion = null;
-    public bool canMove = true;
-
-
     // Start is called before the first frame update
     void Start()
     {
         //pull components 
-        CharacterRB=GetComponent<Rigidbody>();
-        Inventory=GetComponent<PlayerInventory>();  
+        CharacterRB = GetComponent<Rigidbody>();
+        Inventory = GetComponent<PlayerInventory>();
+        _hotbar = FindObjectOfType<UIHotbarManager>();
     }
 
     // Update is called once per frame
@@ -71,15 +73,20 @@ public class PlayerMain : MonoBehaviour
         GetInput(); 
         SpeedCheck();
 
-        if(Input.GetKeyDown(JumpButton)) IsJumping=true;
+        if(Input.GetKeyDown(KeyCode.Space)) IsJumping = true;
 
         // input: use potion 
         if(Input.GetMouseButtonDown(0))
         {
-            if(CurrentPotion != null)
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                CurrentPotion.ApplyEffect(this); 
-                CurrentPotion = null; 
+                Potion activePotion = potionBelt[activeSlotIndex];
+                if(activePotion != null)
+                {
+                    activePotion.ApplyEffect(this); 
+                    potionBelt[activeSlotIndex] = null;
+                    _hotbar.UpdateSlotVisuals();
+                }
             }
         }
     }
@@ -173,5 +180,21 @@ public class PlayerMain : MonoBehaviour
                 }
             }   
         }
+    }
+
+    public void AddPotionToBelt(Potion newPotion)
+    {
+        for (int i = 0; i < potionBelt.Length; i++)
+        {
+            if (potionBelt[i] == null)
+            {
+                potionBelt[i] = newPotion;
+                Debug.Log($"Stored {newPotion.potionName} in slot {i + 1}");
+                
+                _hotbar.UpdateSlotVisuals();
+                return;
+            }
+        }
+        Debug.Log("Potion belt is full!");
     }
 }

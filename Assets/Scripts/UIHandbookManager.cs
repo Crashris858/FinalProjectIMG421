@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class UIHandbookManager : MonoBehaviour
 {
     [Header("Setup")]
+    public GameObject hotbar;
     public GameObject handbookPanel;
     public PlayerInventory inventory;
     public GameObject entryPrefab;
+    public PlayerCamera playerCam;
 
     [Header("Containers")]
     public Transform inventoryContainer;
@@ -64,12 +66,15 @@ public class UIHandbookManager : MonoBehaviour
 
         if(isOpen)
         {
+            FindObjectOfType<Cauldron>()?.CloseCauldronUI();
             ShowInventoryTab();
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+            playerCam.canMove = false;
             PlayerMain.Instance.canMove = false;
+            hotbar.SetActive(false);
         }
         else
         {
@@ -77,6 +82,8 @@ public class UIHandbookManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             PlayerMain.Instance.canMove = true;
+            playerCam.canMove = true;
+            hotbar.SetActive(true);
         }
     }
 
