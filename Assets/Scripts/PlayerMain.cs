@@ -33,6 +33,9 @@ public class PlayerMain : MonoBehaviour
     public bool canMove = true;
     public bool FireResist = false; 
 
+    public AudioSource usePotion;
+
+
     private float Vertical;
     private float Horizontal;
     private float DetectionDistace = 100f;
@@ -92,6 +95,7 @@ public class PlayerMain : MonoBehaviour
                 Potion activePotion = potionBelt[activeSlotIndex];
                 if(activePotion != null)
                 {
+                    usePotion.Play();
                     activePotion.ApplyEffect(this); 
                     potionBelt[activeSlotIndex] = null;
                     _hotbar.UpdateSlotVisuals();
@@ -191,7 +195,7 @@ public class PlayerMain : MonoBehaviour
                 //if e press
                 if(Input.GetKeyDown(KeyCode.E))
                 {
-                    print("Key Pressed");
+                    //print("Key Pressed");
                     //handle item pickup
                     ItemData Item = hitObject.collider.gameObject.GetComponentInParent<ItemData>();
                     if (Item != null)

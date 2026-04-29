@@ -13,8 +13,13 @@ public class Cauldron : MonoBehaviour
     private bool isPlayerInRange = false;
     private bool isUiOpen = false;
 
+    [Header("Audio")]
+    public AudioSource cauldronBubbling;
+
     void Start()
     {
+        cauldronBubbling = GetComponent<AudioSource>();
+        
         // defaults to hide UI and prompt
         isPlayerInRange = false;
         isUiOpen = false;
@@ -44,6 +49,7 @@ public class Cauldron : MonoBehaviour
 
     public void OpenCauldronUI()
     {
+        cauldronBubbling.Play();
         isUiOpen = true;
         cauldronCanvas.SetActive(true);
         interactionPrompt.SetActive(false);
@@ -65,6 +71,7 @@ public class Cauldron : MonoBehaviour
 
     public void CloseCauldronUI()
     {
+        cauldronBubbling.Stop();
         isUiOpen = false;
         cauldronCanvas.SetActive(false);
         hotbar.SetActive(true);
