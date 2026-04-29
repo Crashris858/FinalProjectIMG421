@@ -12,6 +12,8 @@ public class PotionManager : MonoBehaviour
     private int totalNotes;
     private int notesHit = 0;
     private int notesProcessed = 0;
+    public AudioSource hitSound;
+    public AudioSource missSound;
     
     public void Awake()
     {
@@ -56,11 +58,13 @@ public class PotionManager : MonoBehaviour
     {
         notesHit++;
         noteProcessed();
+        hitSound.Play();
     }
 
     public void Miss()
     {
         noteProcessed();
+        missSound.Play();
     }
 
     void noteProcessed()

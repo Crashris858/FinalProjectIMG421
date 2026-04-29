@@ -25,6 +25,7 @@ public class PlayerMain : MonoBehaviour
     public bool grounded = true; 
     public PlayerInventory Inventory; 
     public bool canMove = true;
+    public AudioSource usePotion;
 
     private float Vertical;
     private float Horizontal;
@@ -83,6 +84,7 @@ public class PlayerMain : MonoBehaviour
                 Potion activePotion = potionBelt[activeSlotIndex];
                 if(activePotion != null)
                 {
+                    usePotion.Play();
                     activePotion.ApplyEffect(this); 
                     potionBelt[activeSlotIndex] = null;
                     _hotbar.UpdateSlotVisuals();
@@ -168,7 +170,7 @@ public class PlayerMain : MonoBehaviour
                 //if e press
                 if(Input.GetKeyDown(KeyCode.E))
                 {
-                    print("Key Pressed");
+                    //print("Key Pressed");
                     //handle item pickup
                     ItemData Item = hitObject.collider.gameObject.GetComponentInParent<ItemData>();
                     if (Item != null)

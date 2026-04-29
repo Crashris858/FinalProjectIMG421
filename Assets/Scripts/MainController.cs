@@ -8,6 +8,10 @@ public class MainController : MonoBehaviour
     private PlayerCamera _playerCam;
     private Cauldron _currentCauldron;
 
+    [Header("Audio")]
+    public AudioSource forestAmbiance;
+    public AudioSource fluteMusic;
+
     public void Start()
     {
         _playerCam = mainCamera.GetComponent<PlayerCamera>();
@@ -23,6 +27,9 @@ public class MainController : MonoBehaviour
 
         PlayerMain.Instance.canMove = false;
         _playerCam.canMove = false;
+
+        forestAmbiance.Pause();
+        fluteMusic.Pause();
 
         SceneManager.LoadScene("_RhythmGameScene", LoadSceneMode.Additive);
     }
@@ -40,6 +47,9 @@ public class MainController : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            forestAmbiance.UnPause();
+            fluteMusic.UnPause();
 
             BrewingData.returning = false;
             ShowBrewingResults();
