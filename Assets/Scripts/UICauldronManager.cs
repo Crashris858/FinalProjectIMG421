@@ -22,7 +22,7 @@ public class UICauldronManager : MonoBehaviour
 
     public void RefreshUI()
     {
-        // 1. Clear existing buttons
+        // clears existing buttons
         foreach (Transform child in containerIn1) Destroy(child.gameObject);
         foreach (Transform child in containerIn2) Destroy(child.gameObject);
         foreach (Transform child in containerIn3) Destroy(child.gameObject);
@@ -35,6 +35,7 @@ public class UICauldronManager : MonoBehaviour
             else counts.Add(item, 1);
         }
 
+        // displays each ingredient as a button in the correct container, with count
         foreach(var entry in counts)
         {
             string itemName = entry.Key;
@@ -59,6 +60,7 @@ public class UICauldronManager : MonoBehaviour
         }
     }
 
+    // finds what slot the ingredient belongs to
     private int GetIngredientSlot(string name)
     {
         if(name == "Water") return 1;
@@ -67,6 +69,7 @@ public class UICauldronManager : MonoBehaviour
         return 0;
     }
 
+    // gets the target container based on slot number
     private Transform GetTargetContainer(int slot)
     {
         if(slot == 1) return containerIn1;
@@ -75,6 +78,7 @@ public class UICauldronManager : MonoBehaviour
         return null;
     }
 
+    // updates the brewing data with the selected ingredient and slot number
     void SelectIngredient(string name, int slotNumber)
     {
         if (slotNumber == 1) BrewingData.Slot1 = name;
@@ -85,6 +89,7 @@ public class UICauldronManager : MonoBehaviour
         ValidateRecipe();
     }
 
+    // ensures all 3 slots are filled before allowing brewing to start
     void ValidateRecipe()
     {
         bool isValid = !string.IsNullOrEmpty(BrewingData.Slot1) && 

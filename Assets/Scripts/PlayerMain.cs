@@ -2,6 +2,20 @@ using UnityEngine;
 
 public class PlayerMain : MonoBehaviour
 {
+    public static PlayerMain Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     [Header("Set in Inspector")]
     public float Speed = 15f;
     public float MaxSpeed = 20f; 

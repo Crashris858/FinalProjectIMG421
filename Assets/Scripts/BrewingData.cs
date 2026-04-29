@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public static class BrewingData
 {
     // ingredient slots
@@ -6,5 +8,7 @@ public static class BrewingData
     public static string Slot3 = "";
 
     public static float QualityPercent = 0;
+
+    public static HashSet<string> DiscoveredPotions = new HashSet<string>();
     public static bool returning = false;
 }
