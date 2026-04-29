@@ -46,9 +46,12 @@ A red potion that gives the player fire resistance!
 A blue potion that freezes water it is thrown at!
 
 ## How To Play:
-1. Collect Ingredients - Walk up to ingredients & click E to collect
-2. Brew Potions - With ingredients in your inventory interact with the cauldron
-3. Use Potions - 
+#### 1. Collect Ingredients <br>
+Walk up to ingredients & click E to collect
+#### 2. Brew Potions <br>
+With ingredients in your inventory interact with the cauldron. Once the mini game begins use the arrow keys to hit the notes as they reach the bottom of the screen. The more notes you hit on time, the better quality the potion will be!
+#### 3. Use Potions <br>
+While holding a potion left click to use it; Use potions in creative ways to have access to more areas in the map and collect new ingredients for different potions!
 
 ## Assets:
 ### Audio:
@@ -56,14 +59,9 @@ A blue potion that freezes water it is thrown at!
 
 ### Art :
 #### Unity Packages - 
-
-The Wood Cabin -Studio KrokiDana 
-
-Low Poly Enviorment - Nature Free -Polytope Studio 
-
-Free Fantasy Terrain Textures -3D Haven
-
-
+The Wood Cabin -Studio KrokiDana <br>
+Low Poly Enviorment -Polytope Studio <br>
+Free Fantasy Terrain Textures -3D Haven <br>
 
 ## Game:
 [Link to Play Potion Motion](https://crashris.itch.io/potiongame)
