@@ -101,6 +101,6 @@ public class StartScreenManager : MonoBehaviour
             }
         }
 
-        SceneManager.LoadScene("_Main");
+        SceneManager.LoadSceneAsync("_Main");
     }
 }
