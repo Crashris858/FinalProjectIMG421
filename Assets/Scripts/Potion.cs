@@ -37,7 +37,7 @@ public class AntiGravityPotion : Potion
             // Turn off player gravity 
             player.CharacterRB.useGravity = false;
             //apply an upward velocity for "anti-gravity effect" 
-            player.CharacterRB.AddForce(Vector3.up*player.JumpForce, ForceMode.VelocityChange);
+            player.CharacterRB.AddForce(Vector3.up*player.JumpForce/2, ForceMode.VelocityChange);
             //run coroutine (must pass something with monobehaviour for time)
             player.StartCoroutine(RemoveEffect(player));
         }
@@ -64,7 +64,12 @@ public class FireResistancePotion : Potion
     }
     public override void ApplyEffect(PlayerMain player)
     {
-        Debug.Log("Applied Fire Resistance Potion effect.");
+        if(player!=null)
+        {
+            //instantiate object 
+            player.FireResist=true; 
+            player.StartCoroutine(RemoveEffect(player));
+        }
     }
     public IEnumerator RemoveEffect(PlayerMain player)
     {
@@ -72,6 +77,7 @@ public class FireResistancePotion : Potion
         {
             //wait for effect dureaiton 
             yield return new WaitForSeconds(effectDuration);
+            player.FireResist=false; 
         
         }
     }
@@ -117,7 +123,12 @@ public class FreezePotion : Potion
     }
     public override void ApplyEffect(PlayerMain player)
     {
-        Debug.Log("Applied Freeze Potion effect.");
+        if(player!=null)
+        {
+            //call throw potion
+            player.ThrowPotion(this);
+            //subroutine not required for throwables
+        }
     }
     public IEnumerator RemoveEffect(PlayerMain player)
     {

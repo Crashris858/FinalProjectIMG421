@@ -1,3 +1,6 @@
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,12 +15,15 @@ public class PlayerMain : MonoBehaviour
 
     [Header("Movement Settings")]
     public float Speed = 15f;
-    public float JumpForce = 30f; 
+    public float JumpForce = 30f;
+    public float MaxY =40f;  
     public float PlayerDrag = 5f; 
     public Transform Orientation; 
     public float playerHeight; 
     public LayerMask WhatIsGround; 
     public Camera CharacterCamera; 
+    public ThrowablePotion ThrowPrefab = null; 
+    public float ThrowForce = 40f;
 
     [Header("Status")]
     public bool IsJumping = false; 
@@ -25,6 +31,7 @@ public class PlayerMain : MonoBehaviour
     public bool grounded = true; 
     public PlayerInventory Inventory; 
     public bool canMove = true;
+    public bool FireResist = false; 
 
     private float Vertical;
     private float Horizontal;
@@ -49,6 +56,7 @@ public class PlayerMain : MonoBehaviour
         CharacterRB = GetComponent<Rigidbody>();
         Inventory = GetComponent<PlayerInventory>();
         _hotbar = FindObjectOfType<UIHotbarManager>();
+
     }
 
     // Update is called once per frame
@@ -72,6 +80,7 @@ public class PlayerMain : MonoBehaviour
         GroundCheck();
         GetInput(); 
         SpeedCheck();
+        YCheck(); 
 
         if(Input.GetKeyDown(KeyCode.Space)) IsJumping = true;
 
@@ -153,6 +162,20 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
+    //func: yCheck 
+    //desc: locks the players y position 
+    private void YCheck()
+    {
+        //if out of bounds
+        if(transform.position.y>MaxY)
+        {
+            //clamp to max y
+            Vector3 pos = transform.position;
+            pos.y=MaxY; 
+            transform.position=pos; 
+        }
+    }
+
     //func: ItemCeheck
     //desc: checks if an item is in range
     private void ItemCheck()
@@ -196,5 +219,24 @@ public class PlayerMain : MonoBehaviour
             }
         }
         Debug.Log("Potion belt is full!");
+    }
+
+    //func: throw Potion
+    //desc: throws a potion. This is called by other scripts. 
+    public void ThrowPotion(Potion currentPotion)
+    {
+        //instantiate potion object 
+        ThrowablePotion ReadyPotion = Instantiate(ThrowPrefab,transform.position, Quaternion.identity);
+        ReadyPotion.effectDuration=currentPotion.effectDuration; 
+        //find correct tag 
+        switch (currentPotion)
+        {
+            case FreezePotion:
+            ReadyPotion.tag="IcePotion";
+            ReadyPotion.ThrowableRender.material.color=currentPotion.liquidColor;
+            break; 
+        }
+        //launch in player direction
+        ReadyPotion.GetComponent<Rigidbody>().AddForce(transform.forward * ThrowForce, ForceMode.Impulse);
     }
 }
