@@ -17,7 +17,7 @@ public class Flame : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
         //if collider is player 
-        if(collision.gameObject.CompareTag("Player"));
+        if(collision.gameObject.CompareTag("Player"))
         {
             PlayerMain player = collision.gameObject.GetComponent<PlayerMain>(); 
             print("player collected");
