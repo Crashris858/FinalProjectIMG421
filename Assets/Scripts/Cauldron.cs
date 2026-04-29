@@ -6,6 +6,7 @@ public class Cauldron : MonoBehaviour
     public GameObject cauldronCanvas;
     public GameObject interactionPrompt;
     public UICauldronManager uiCauldronManager;
+    public GameObject hotbar;
 
     [Header("Player Settings")]
     public PlayerCamera playerCam;
@@ -46,6 +47,7 @@ public class Cauldron : MonoBehaviour
         isUiOpen = true;
         cauldronCanvas.SetActive(true);
         interactionPrompt.SetActive(false);
+        hotbar.SetActive(false);
 
         uiCauldronManager.RefreshUI();
 
@@ -59,6 +61,7 @@ public class Cauldron : MonoBehaviour
     {
         isUiOpen = false;
         cauldronCanvas.SetActive(false);
+        hotbar.SetActive(true);
 
         if (isPlayerInRange) interactionPrompt.SetActive(true);
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIHandbookManager : MonoBehaviour
 {
     [Header("Setup")]
+    public GameObject hotbar;
     public GameObject handbookPanel;
     public PlayerInventory inventory;
     public GameObject entryPrefab;
@@ -61,6 +62,7 @@ public class UIHandbookManager : MonoBehaviour
     {
         isOpen = !isOpen;
         handbookPanel.SetActive(isOpen);
+        hotbar.SetActive(!isOpen);
 
         if(isOpen)
         {

@@ -37,7 +37,11 @@ public class PlayerMain : MonoBehaviour
     public PlayerInventory Inventory; 
     float Vertical;
     float Horizontal;
-    public Potion CurrentPotion = null;
+
+    [Header("Inventory")]
+    public Potion[] potionBelt = new Potion[5]; 
+    public int activeSlotIndex = 0;
+
     public bool canMove = true;
 
 
@@ -76,10 +80,15 @@ public class PlayerMain : MonoBehaviour
         // input: use potion 
         if(Input.GetMouseButtonDown(0))
         {
-            if(CurrentPotion != null)
+            Potion activePotion = potionBelt[activeSlotIndex];
+
+            if(activePotion != null)
             {
-                CurrentPotion.ApplyEffect(this); 
-                CurrentPotion = null; 
+                activePotion.ApplyEffect(this); 
+                potionBelt[activeSlotIndex] = null;
+
+                UIHotbarManager hotbar = FindObjectOfType<UIHotbarManager>();
+                if(hotbar != null) hotbar.UpdateSlotVisuals();
             }
         }
     }
@@ -173,5 +182,21 @@ public class PlayerMain : MonoBehaviour
                 }
             }   
         }
+    }
+
+    public void AddPotionToBelt(Potion newPotion)
+    {
+        for (int i = 0; i < potionBelt.Length; i++)
+        {
+            if (potionBelt[i] == null)
+            {
+                potionBelt[i] = newPotion;
+                Debug.Log($"Stored {newPotion.potionName} in slot {i + 1}");
+                
+                FindObjectOfType<UIHotbarManager>().UpdateSlotVisuals();
+                return;
+            }
+        }
+        Debug.Log("Potion belt is full!");
     }
 }
